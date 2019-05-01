@@ -40,6 +40,37 @@ print_words() and print_top().
 """
 
 import sys
+def print_words(filename):
+    new_dict = {}
+    file = open(filename, 'r')
+    contents = file.read()
+    contents = contents.split()
+    for word in contents:
+        if word in new_dict:
+            new_dict[word] += 1
+        else:
+            new_dict[word] = 1
+    print(new_dict)
+    for key in new_dict:
+        print(key, new_dict[key])
+
+def print_top(filename):
+    new_dict = {}
+    file = open(filename, 'r')
+    contents = file.read()
+    contents = contents.split()
+    for word in contents:
+        if word in new_dict:
+            new_dict[word] += 1
+        else:
+            new_dict[word] = 1
+    broken = 0 
+    for (key, value) in sorted(new_dict.items(), key=lambda item: item[1], reverse=True):
+        
+        if broken > 19:
+            break
+        print(key, value)
+        broken += 1
 
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
